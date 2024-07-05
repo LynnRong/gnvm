@@ -4,7 +4,6 @@
 #### `GNVM` 是一个简单的 `Windows` 下 Node.js 多版本管理器，类似的 `nvm` `nvmw` 
 > [原作者`Kenshin`](https://github.com/Kenshin/gnvm)多年未维护，npm源有问题，所以在此修复并拓展。
 
-`nodist` 。  
 ```
 c:\> gnvm install latest 1.0.0-x86 1.0.0-x64 5.0.0
 Start download Node.js versions [5.10.1, 1.0.0, 1.0.0-x86, 5.0.0].
@@ -277,7 +276,7 @@ c:\> npm -v
 <!-- Link -->
 [www-badge]:        https://img.shields.io/badge/website-gnvm.ksria.com-1DBA90.svg
 [www-link]:         http://ksria.com/gnvm
-[version-badge]:    https://img.shields.io/badge/lastest_version-0.2.0-blue.svg
+[version-badge]:    https://img.shields.io/badge/lastest_version-0.3.0-blue.svg
 [version-link]:     https://github.com/LynnRong/gnvm/releases
 [license-badge]:    https://img.shields.io/github/license/mashape/apistatus.svg
 [license-link]:     https://opensource.org/licenses/MIT
