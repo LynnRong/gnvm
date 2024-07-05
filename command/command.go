@@ -314,6 +314,9 @@ gnvm config registry [custom] :Custom  is valid url.
 gnvm config registry DEFAULT  :DEFAULT is built-in variable. value is http://nodejs.org/dist/
 gnvm config registry TAOBAO   :TAOBAO  is built-in variable. value is http://npm.taobao.org/mirrors/node
 gnvm config registry test     :Validation .gnvmfile registry property.
+gnvm config npmregistry [custom] :Custom  is valid url.
+gnvm config npmregistry DEFAULT  :DEFAULT is built-in variable. value is https://registry.npmjs.org/  (for npm)
+gnvm config npmregistry TAOBAO   :TAOBAO  is built-in variable. value is https://registry.npmmirror.com/  (for npm)
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
@@ -321,6 +324,7 @@ gnvm config registry test     :Validation .gnvmfile registry property.
 		} else if len(args) == 1 {
 			args[0] = util.EqualAbs("INIT", args[0])
 			args[0] = util.EqualAbs("registry", args[0])
+			args[0] = util.EqualAbs("npmregistry", args[0])
 			args[0] = util.EqualAbs("noderoot", args[0])
 			args[0] = util.EqualAbs("latestversion", args[0])
 			args[0] = util.EqualAbs("globalversion", args[0])
@@ -336,20 +340,33 @@ gnvm config registry test     :Validation .gnvmfile registry property.
 			}
 		} else if len(args) == 2 {
 			args[0] = util.EqualAbs("registry", args[0])
+			args[0] = util.EqualAbs("npmregistry", args[0])
 			args[1] = util.EqualAbs("DEFAULT", args[1])
 			args[1] = util.EqualAbs("TAOBAO", args[1])
 			args[1] = util.EqualAbs("test", args[1])
-			if args[0] != "registry" {
-				P(ERROR, "%v only support [%v] keyword. See '%v'.\n", "gnvm config", "registry", "gnvm help config")
+			if args[0] != "registry" && args[0] != "npmregistry" {
+				P(ERROR, "%v only support [%v] keyword. See '%v'.\n", "gnvm config", "registry|npmregistry", "gnvm help config")
 				return
 			}
 			switch args[1] {
 			case "DEFAULT":
-				if newValue := config.SetConfig(args[0], util.ORIGIN_DEFAULT); newValue != "" {
+				var newValue string
+				if args[0] == "npmregistry" {
+					newValue = util.ORIGIN_NPM_DEFAULT
+				} else {
+					newValue = util.ORIGIN_DEFAULT
+				}
+				if newValue = config.SetConfig(args[0], newValue); newValue != "" {
 					P(DEFAULT, "Set success, %v new value is %v\n", args[0], newValue)
 				}
 			case "TAOBAO":
-				if newValue := config.SetConfig(args[0], util.ORIGIN_TAOBAO); newValue != "" {
+				var newValue string
+				if args[0] == "npmregistry" {
+					newValue = util.ORIGIN_NPM_TAOBAO
+				} else {
+					newValue = util.ORIGIN_TAOBAO
+				}
+				if newValue = config.SetConfig(args[0], newValue); newValue != "" {
 					P(DEFAULT, "Set success, %v new value is %v\n", args[0], newValue)
 				}
 			case "test":

@@ -31,6 +31,8 @@ const (
 
 	ORIGIN_DEFAULT = "http://nodejs.org/dist/"
 	ORIGIN_TAOBAO  = "http://npm.taobao.org/mirrors/node/"
+	ORIGIN_NPM_DEFAULT = "https://registry.npmjs.org/"
+	ORIGIN_NPM_TAOBAO  = "https://registry.npmmirror.com/"
 	NODELIST       = "index.json"
 	SHASUMS        = "SHASUMS256.txt"
 )

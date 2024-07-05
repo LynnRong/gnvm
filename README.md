@@ -1,11 +1,10 @@
 ![logo](http://i.imgur.com/Z4iPSgQ.png) GNVM - Node.js 多版本管理器  
 ================================  
-[![Travis][travis-badge]][travis-link]
 [![Version][version-badge]][version-link]
-[![Gitter][gitter-badge]][gitter-link]
-[![Slack][slack-badge]][slack-link]
-[![Jianliao][jianliao-badge]][jianliao-link]  
-#### `GNVM` 是一个简单的 `Windows` 下 Node.js 多版本管理器，类似的 `nvm` `nvmw` `nodist` 。  
+#### `GNVM` 是一个简单的 `Windows` 下 Node.js 多版本管理器，类似的 `nvm` `nvmw` 
+> [原作者`Kenshin`](https://github.com/Kenshin/gnvm)多年未维护，npm源有问题，所以在此修复并拓展。
+
+`nodist` 。  
 ```
 c:\> gnvm install latest 1.0.0-x86 1.0.0-x64 5.0.0
 Start download Node.js versions [5.10.1, 1.0.0, 1.0.0-x86, 5.0.0].
@@ -41,25 +40,11 @@ Update success, current Node.js latest version is 5.10.0.
 ---
 [![Website][www-badge]][www-link]
 
-文档
----
-[English](https://github.com/kenshin/gnvm/blob/master/README.en.md) | [繁體中文](https://github.com/kenshin/gnvm/blob/master/README.tw.md)
 
 下载
 ---
-* [32-bit](https://app.box.com/gnvm/1/2014967291) | [64-bit](https://app.box.com/gnvm/1/2014967689) 常用地址，Box，速度稍慢
-* [32-bit](http://pan.baidu.com/s/1gdmVgen#dir/path=%2F%E6%88%91%E7%9A%84%E5%85%B1%E4%BA%AB%2Fgnvm%2F32-bit) | [64-bit](http://pan.baidu.com/s/1gdmVgen#dir/path=%2F%E6%88%91%E7%9A%84%E5%85%B1%E4%BA%AB%2Fgnvm%2F64-bit) 备用地址，百度网盘，速度快
-* [32-bit](https://github.com/Kenshin/gnvm-bin/blob/master/32-bit/gnvm.exe?raw=true) | [64-bit](https://github.com/Kenshin/gnvm-bin/blob/master/64-bit/gnvm.exe?raw=true) 备用地址，Github
 
-* 已经安装了go的用户，使用  
-  `go get github.com/Kenshin/gnvm`
-
-* 已经安装了git的用户，使用  
-  `git clone git@github.com:Kenshin/gnvm-bin.git`
-
-* 已经安装了curl的用户，使用  
-  `curl -L https://github.com/Kenshin/gnvm-bin/blob/master/32-bit/gnvm.exe?raw=true -o gnvm.exe`  
-  `curl -L https://github.com/Kenshin/gnvm-bin/blob/master/64-bit/gnvm.exe?raw=true -o gnvm.exe`
+[链接][version-link]
 
 安装
 ---
@@ -98,6 +83,7 @@ version      查看 gnvm 版本
 * `session`  当前 `cmd` 所对应的环境。（临时环境）
 * `.gnvmrc`  `gnvm`配置文件，无需手动建立，其中保存了 `本地` / `远程` Node.js 版本信息等。
     - `registry` 下载 `node.exe` 所对应的库，默认为 [DEFAULT](http://nodejs.org/dist/)，可以更换为 [TAOBAO](http://npm.taobao.org/mirrors/node)，也支持自定义。（**自定义库的结构需要保持一致。**）
+    - `npmregistry` 下载 `npm` 所对应的库，默认为 [DEFAULT](https://registry.npmjs.org/)，可以更换为 [TAOBAO](https://registry.npmmirror.com/)，也支持自定义。（**自定义库的结构需要保持一致。**）
     - `noderoot` 保存了全局 `Node.js` 所在的目录。（也是 `gnvm.exe` 所在的目录。）
 
 入门指南
@@ -109,15 +95,19 @@ version      查看 gnvm 版本
 ```
 globalversion: 5.0.1
 latestversion: 5.10.1
-noderoot: /Users/kenshin/Work/28-GO/01-work/src/gnvm
+noderoot: /Users/LynnRong/Work/28-GO/01-work/src/gnvm
 registry: http://npm.taobao.org/mirrors/node/
+npmregistry: https://registry.npmmirror.com/
 ```
 
 **更换更快的库 registry**
-  > `gnvm.exe` 内建了 [DEFAULT](http://nodejs.org/dist/) 和 [TAOBAO](http://npm.taobao.org/mirrors/node) 两个库。
+  > `gnvm.exe` 内建了 
+  - node: [DEFAULT](http://nodejs.org/dist/) 和 [TAOBAO](http://npm.taobao.org/mirrors/node) 两个库。
+   - npm: [DEFAULT](https://registry.npmjs.org/) 和 [TAOBAO](https://registry.npmmirror.com/) 两个库。
 
 ```
 gnvm config registry TAOBAO
+gnvm config npmregistry TAOBAO
 ```
 
 **安装 多个 Node.js**
@@ -272,13 +262,13 @@ c:\> npm -v
 相关链接
 ---
 * [更新日志](https://github.com/kenshin/gnvm/blob/master/CHANGELOG.md)
-* [联系方式](http://kenshin.wang/) | [邮件](kenshin@ksria.com) | [微博](http://weibo.com/23784148)
-* [反馈](https://github.com/kenshin/gnvm/issues)
+* [反馈](https://github.com/LynnRong/gnvm/issues)
 
 感谢
 ---
 * 图标来自 <http://www.easyicon.net> 。
 * 页面设计参考 [You-Get](https://you-get.org/) 。
+* [原作者`Kenshin`](https://github.com/Kenshin/gnvm)。
 
 许可
 ---
@@ -288,14 +278,6 @@ c:\> npm -v
 [www-badge]:        https://img.shields.io/badge/website-gnvm.ksria.com-1DBA90.svg
 [www-link]:         http://ksria.com/gnvm
 [version-badge]:    https://img.shields.io/badge/lastest_version-0.2.0-blue.svg
-[version-link]:     https://github.com/kenshin/gnvm/releases
-[travis-badge]:     https://travis-ci.org/Kenshin/gnvm.svg?branch=master
-[travis-link]:      https://travis-ci.org/Kenshin/gnvm
-[gitter-badge]:     https://badges.gitter.im/kenshin/gnvm.svg
-[gitter-link]:      https://gitter.im/kenshin/gnvm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-[slack-badge]:      https://img.shields.io/badge/chat-slack-orange.svg
-[slack-link]:       https://gnvm.slack.com/
-[jianliao-badge]:   https://img.shields.io/badge/chat-jianliao-yellowgreen.svg
-[jianliao-link]:    https://guest.jianliao.com/rooms/76dce8b01v
+[version-link]:     https://github.com/LynnRong/gnvm/releases
 [license-badge]:    https://img.shields.io/github/license/mashape/apistatus.svg
 [license-link]:     https://opensource.org/licenses/MIT

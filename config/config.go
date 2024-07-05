@@ -31,6 +31,9 @@ const (
 	REGISTRY     = "registry"
 	REGISTRY_KEY = REGISTRY + ": "
 
+	NPM_REGISTRY     = "npmregistry"
+	NPM_REGISTRY_KEY = NPM_REGISTRY + ": "
+
 	NODEROOT     = "noderoot"
 	NODEROOT_KEY = NODEROOT + ": "
 

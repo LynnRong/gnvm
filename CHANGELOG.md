@@ -1,3 +1,9 @@
+v0.3.0 2024-07-05
+
+CHANGELOG
+
+- 新增`npmregistry`配置，用于配置npm源
+
 v0.2.0 2016-04-27
 
 CHANGELOG
